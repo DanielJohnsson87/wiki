@@ -1,4 +1,5 @@
 # DNS Enumeration
+A lot of useful tips can be found here https://book.hacktricks.xyz/network-services-pentesting/pentesting-dns
 
 ### Subdomain enumeration
 
