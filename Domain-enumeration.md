@@ -19,3 +19,8 @@ dig axfr @<DNS_IP> #Try zone transfer without domain
 dig axfr @<DNS_IP> <DOMAIN> #Try zone transfer guessing the domain
 fierce --domain <DOMAIN> --dns-servers <DNS_IP> #Will try toperform a zone transfer against every authoritative name server and if this doesn'twork, will launch a dictionary attack
 ```
+
+### Certificate Transparency (CT) logs
+These are publicly accessible logs of every SSL/TLS certificate created for a domain name. Can reveal new subdomains 
+
+https://crt.sh/ & https://ui.ctsearch.entrust.com/ui/ctsearchui
