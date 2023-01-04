@@ -9,6 +9,8 @@ gobuster dns -d trick.htb -w /usr/share/wordlists/SecLists/Discovery/DNS/subdoma
 
 # ffuf - filter out false positives with `-fw` (words), `-fs` (size), `-fc` (Status code)
 ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://trick.htb -H "Host:FUZZ.trick.htb"
+
+dnsrecon -t brt -d domain.com
 ```
 
 ### Zone transfer
@@ -24,3 +26,10 @@ fierce --domain <DOMAIN> --dns-servers <DNS_IP> #Will try toperform a zone trans
 These are publicly accessible logs of every SSL/TLS certificate created for a domain name. Can reveal new subdomains 
 
 https://crt.sh/ & https://ui.ctsearch.entrust.com/ui/ctsearchui
+
+### Google Dorking
+Use google to search for subdomains. `-site:www.domain.com` excludes www subdomain and `site:*.domain.com` searches for all other subdomains.
+
+Google Query - `-site:www.domain.com site:*.domain.com`
+
+
