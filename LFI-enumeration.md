@@ -37,8 +37,10 @@ Could be vulnerable to an attack like this. (Fixed in PHP 5.3.4 and above.)
 GET http://site.com/index.php?filename=../../../../etc/passwd%00
 ```
 
-### Filter bypass
-It's possible that there's a filter applied that disallowes files. In that case it could be possible to bypass the filter by sending a null byte `(%00 or 0x00)` or by adding the current directory `(.)` to the end of the file path. 
+### Filter bypasses
+
+#### Bypass filename black list filter
+It's possible that there's a filter being applied that disallowes certain file names. In that case it could be possible to bypass the filter by sending a null byte `(%00 or 0x00)` or by adding the current directory `(.)` to the end of the file path. 
 
 If there's for example a filter disallowing the `/etc/passwd` file it might be possible to bypass it with one of these requests.
 
@@ -51,3 +53,12 @@ GET http://site.com/index.php?filename=../../../../etc/passwd%00
 ```HTTP
 GET http://site.com/index.php?filename=../../../../etc/passwd/.
 ```
+
+#### Bypass `../` replacement
+In some cases the application might replace `../` with an empty string to try and prevent directoy traversal. In that case it could be possible to bypass it by sending a string like this `....//....//etc/passwd`. This is because some languages will only replace matches in the original string and wont't try to match occurances in the resulting string. 
+
+```HTTP
+GET http://site.com/index.php?filename=....//....//etc/passwd/.
+```
+
+Would after replacing any `../` result in the application looking for a file called  `../../etc/passwd`
