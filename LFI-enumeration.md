@@ -70,3 +70,7 @@ If files to be included are only allowed from a certain folder it might be possi
 ```HTTP
 GET http://site.com/index.php?filename=allowed-folder/../../../../etc/passwd
 ```
+
+
+#### Switch `Method`
+It might be possible that the filters are only applied to the current method. Try sending the same request with `GET/POST/PUT` instead
