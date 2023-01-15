@@ -58,7 +58,15 @@ GET http://site.com/index.php?filename=../../../../etc/passwd/.
 In some cases the application might replace `../` with an empty string to try and prevent directoy traversal. In that case it could be possible to bypass it by sending a string like this `....//....//etc/passwd`. This is because some languages will only replace matches in the original string and wont't try to match occurances in the resulting string. 
 
 ```HTTP
-GET http://site.com/index.php?filename=....//....//etc/passwd/.
+GET http://site.com/index.php?filename=....//....//etc/passwd
 ```
 
 Would after replacing any `../` result in the application looking for a file called  `../../etc/passwd`
+
+
+#### Bypass include only allowed from a certain folder.
+If files to be included are only allowed from a certain folder it might be possible to add that folder to the path and then use directory traversal to move to the correct folder. 
+
+```HTTP
+GET http://site.com/index.php?filename=allowed-folder/../../../../etc/passwd
+```
