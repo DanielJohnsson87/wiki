@@ -1,7 +1,0 @@
-# LFI enumeration
-Read more https://book.hacktricks.xyz/pentesting-web/file-inclusion
-
-```bash
-# Enumerate the page query parameter for LFI vulneratbility
-ffuf -w /usr/share/wordlists/lfi.txt -u http://preprod-marketing.trick.htb/index.php?page=FUZZ -fw 1
-```
