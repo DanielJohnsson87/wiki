@@ -11,3 +11,9 @@ Verify identity
 ```
 aws sts get-caller-identity
 ```
+
+Verify for specific identity (Setup identity in .~/aws/config
+
+```
+aws sts get-caller-identity --profile ${identity}
+```
