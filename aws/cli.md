@@ -17,3 +17,8 @@ Verify for specific identity (Setup identity in .~/aws/config
 ```
 aws sts get-caller-identity --profile ${identity}
 ```
+
+Get default region
+```
+aws configure get region
+```
